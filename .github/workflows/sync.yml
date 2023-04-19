@@ -13,10 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Fetch latest changes from remote
+        run: |
+          git fetch origin
+          
+      - name: Pull latest changes into staging branch
+        run: |
+          git checkout staging
+          git pull origin staging
+
       - name: Merge changes from master to staging
         run: |
           git config user.name "GitHub Actions"
           git config user.email "hangout14@gmail.com"
-          git checkout staging
-          git merge master --no-ff --no-edit
+          git merge origin/master --no-ff --no-edit
           git push
