@@ -24,7 +24,7 @@ jobs:
       - name: Pull latest changes into staging branch
         run: |
           git checkout staging
-          git pull origin staging
+          git pull origin staging --allow-unrelated-histories
 
       - name: Merge changes from master to staging
         run: |
