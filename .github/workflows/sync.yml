@@ -1,0 +1,22 @@
+name: Sync Master and Staging
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Merge changes from master to staging
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "hangout14@gmail.com"
+          git checkout staging
+          git merge master --no-ff --no-edit
+          git push
