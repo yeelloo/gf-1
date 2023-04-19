@@ -26,5 +26,5 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "hangout14@gmail.com"
-          git origin/merge master --no-ff --no-edit
+          git merge origin/master --no-ff --no-edit
           git push
